@@ -19,18 +19,15 @@ export default class TaskList extends Component {
     console.log(this.props)
   }
 
-  deleteTask() {
-    console.log('deleteTask() pressed');
-  }
-
   renderTasks() {
     return this.props.tasks.map((task, i) => {
       return (
           <TaskItem
+            id={task.id}
             key={i}
             title={task.title}
             description={task.description}
-            deleteTask={this.deleteTask}
+            deleteTask={this.props.deleteTask}
           />
       );
     });

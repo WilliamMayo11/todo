@@ -27,8 +27,8 @@ export default class Main extends Component {
     });
   }
 
-  showCalendar = ()=> {
-    console.log('showCalendar() from Main.js');
+  showLater = ()=> {
+    console.log('showLater() from Main.js');
   }
 
 render() {
@@ -39,7 +39,7 @@ render() {
         <Button title="Today" color="white" onPress={this.showToday}/>
       </View>
       <View style={styles.button}>
-        <Button title="Calendar" color="white" onPress={this.showCalendar}/>
+        <Button title="Calendar" color="white" onPress={this.showLater}/>
       </View>
     </View>
   );

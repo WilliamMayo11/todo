@@ -14,7 +14,7 @@ export default class TaskItem extends Component {
         <Text style={styles.text1}>Task: <Text style={styles.text2}>{this.props.title}</Text></Text>
         <Text style={styles.text1}>Description: <Text style={styles.text2}>{this.props.description}</Text></Text>
         <View style={styles.button1} >
-          <Button title='Completed!' color='white' onPress={this.props.deleteTask}/>
+          <Button title='Completed!' color='white' onPress={() => this.props.deleteTask(this.props.id)}/>
         </View>
       </View>
     )
