@@ -55,11 +55,13 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'red',
-    marginBottom: 200,
+    marginBottom: 120,
     fontSize: 60,
   },
   button: {
     backgroundColor: '#3b5998',
     marginBottom: 20,
+    height: 30,
+    width: 90,
   }
 });

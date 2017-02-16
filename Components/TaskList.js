@@ -4,6 +4,7 @@ import {
   View,
   StyleSheet,
   ScrollView,
+  Button,
 } from 'react-native';
 
 import TaskItem from './TaskItem';
@@ -18,16 +19,21 @@ export default class TaskList extends Component {
     console.log(this.props)
   }
 
+  deleteTask() {
+    console.log('deleteTask() pressed');
+  }
+
   renderTasks() {
     return this.props.tasks.map((task, i) => {
       return (
-        <TaskItem
-          key={i}
-          title={task.title}
-          description={task.description}
-        />
-      )
-    })
+          <TaskItem
+            key={i}
+            title={task.title}
+            description={task.description}
+            deleteTask={this.deleteTask}
+          />
+      );
+    });
   }
 
   render() {
@@ -42,7 +48,13 @@ export default class TaskList extends Component {
 const styles = StyleSheet.create({
   container1: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'flex-start',
   },
+  button: {
+    backgroundColor: '#3b5998',
+    marginBottom: 20,
+    height: 30,
+    width: 30,
+  }
 });

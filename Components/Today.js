@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  ScrollView,
 } from 'react-native';
 
 import TaskList from './TaskList';
@@ -37,12 +38,14 @@ export default class Today extends Component {
   render() {
     return(
       <View style={styles.container1}>
-      <View style={styles.container2}>
-        <Text style={styles.welcome}>{this.props.user}'s tasks for today:</Text>
-      </View>
-        <TaskList
-          tasks={this.state.tasks}
-        />
+        <View style={styles.container2}>
+          <Text style={styles.welcome}>{this.props.user}'s Tasks for Today:</Text>
+        </View>
+        <ScrollView>
+          <TaskList
+            tasks={this.state.tasks}
+          />
+        </ScrollView>
       </View>
     )
   }
@@ -50,10 +53,11 @@ export default class Today extends Component {
 
 const styles = StyleSheet.create({
   container1: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    marginTop: 20,
   },
   welcome: {
     fontSize: 20,
@@ -62,7 +66,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
-    marginTop: -100,
-    marginBottom: -100,
+    marginTop: -10,
   },
 });
