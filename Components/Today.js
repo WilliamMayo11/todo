@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import TaskList from './TaskList';
+import TaskInput from './TaskInput';
 
 export default class Today extends Component {
 
@@ -17,9 +18,11 @@ export default class Today extends Component {
 
     this.state = {
       tasks: [],
-      newTaskInput: ''
+      taskTitle: ''
     }
   }
+
+  // API Fetches
 
   getTasks() {
     fetch(`http://localhost:3000/db/tasks`)
@@ -49,11 +52,20 @@ export default class Today extends Component {
   }
 
   addTask() {
-    console.log(this.state.newTaskInput)
+    console.log(this.state.taskTitle);
+  }
+
+  // Handle Text Inputs
+
+  updateTaskTitle(text) {
+    this.setState ({
+      taskTitle: text
+    });
   }
 
   componentDidMount() {
     this.getTasks();
+    console.log(this.state.text)
   }
 
   render() {
@@ -62,17 +74,10 @@ export default class Today extends Component {
         <View style={styles.container2}>
           <Text style={styles.welcome}>{this.props.user}'s Tasks for Today:</Text>
         </View>
-        <View>
-          <TextInput
-            style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1}}
-            placeholder='New Task'
-            onChangeText={(text)=> this.setState({text})}
-          />
-          <Button
-            title='Add'
-            onPress={this.addTask}
-          />
-        </View>
+        <TaskInput
+          updateTaskTitle={this.updateTaskTitle.bind(this)}
+          addTask={this.addTask.bind(this)}
+        />
         <ScrollView>
           <TaskList
             tasks={this.state.tasks}
