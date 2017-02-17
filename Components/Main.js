@@ -39,7 +39,7 @@ render() {
         <Button title="Today" color="white" onPress={this.showToday}/>
       </View>
       <View style={styles.button}>
-        <Button title="Calendar" color="white" onPress={this.showLater}/>
+        <Button title="Later" color="white" onPress={this.showLater}/>
       </View>
     </View>
   );

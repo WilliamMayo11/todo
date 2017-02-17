@@ -4,6 +4,8 @@ import {
   View,
   StyleSheet,
   ScrollView,
+  TextInput,
+  Button,
 } from 'react-native';
 
 import TaskList from './TaskList';
@@ -14,7 +16,8 @@ export default class Today extends Component {
     super(props)
 
     this.state = {
-      tasks: []
+      tasks: [],
+      newTaskInput: ''
     }
   }
 
@@ -45,6 +48,10 @@ export default class Today extends Component {
     .catch(err => console.log(err));
   }
 
+  addTask() {
+    console.log(this.state.newTaskInput)
+  }
+
   componentDidMount() {
     this.getTasks();
   }
@@ -54,6 +61,17 @@ export default class Today extends Component {
       <View style={styles.container1}>
         <View style={styles.container2}>
           <Text style={styles.welcome}>{this.props.user}'s Tasks for Today:</Text>
+        </View>
+        <View>
+          <TextInput
+            style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1}}
+            placeholder='New Task'
+            onChangeText={(text)=> this.setState({text})}
+          />
+          <Button
+            title='Add'
+            onPress={this.addTask}
+          />
         </View>
         <ScrollView>
           <TaskList
