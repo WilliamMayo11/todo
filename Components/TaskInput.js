@@ -17,6 +17,11 @@ export default class TaskInput extends Component {
           placeholder='New Task'
           onChangeText={this.props.updateTaskTitle}
         />
+        <TextInput
+          style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1}}
+          placeholder='Description'
+          onChangeText={this.props.updateTaskDescription}
+        />
         <Button
           title='Add'
           onPress={this.props.addTask}

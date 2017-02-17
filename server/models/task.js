@@ -18,6 +18,13 @@ function deleteTask(req, res, next) {
   .catch(err => next(err));
 }
 
+function addTask(req, res, next) {
+  console.log('models/addTask');
+  db.one(`INSERT INTO tasks (title, description) VALUES ($1, $2)`, [req.body.title, req.body.description])
+  .then(next())
+  .catch(err => next(err));
+}
+
 module.exports = {
-  getTasks, deleteTask
+  getTasks, deleteTask, addTask
 }

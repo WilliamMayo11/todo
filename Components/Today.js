@@ -18,7 +18,8 @@ export default class Today extends Component {
 
     this.state = {
       tasks: [],
-      taskTitle: ''
+      taskTitle: '',
+      taskDescription: ''
     }
   }
 
@@ -30,7 +31,7 @@ export default class Today extends Component {
     .then(data => {
       console.log(data);
       this.setState({
-        tasks: data
+        tasks: data.reverse()
       });
       console.log(this.state.tasks[0].title)
     })
@@ -52,7 +53,22 @@ export default class Today extends Component {
   }
 
   addTask() {
-    console.log(this.state.taskTitle);
+    fetch(`http://localhost:3000/db/tasks`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'post',
+      body: JSON.stringify({
+        title: this.state.taskTitle,
+        description: this.state.taskDescription
+      })
+    })
+    .then(this.setState({
+      taskTitle: '',
+      taskDescription: ''
+    }))
+    .then(this.getTasks())
+    .catch(err => console.log(err));
   }
 
   // Handle Text Inputs
@@ -63,9 +79,14 @@ export default class Today extends Component {
     });
   }
 
+  updateTaskDescription(text) {
+    this.setState ({
+      taskDescription: text
+    });
+  }
+
   componentDidMount() {
     this.getTasks();
-    console.log(this.state.text)
   }
 
   render() {
@@ -76,6 +97,7 @@ export default class Today extends Component {
         </View>
         <TaskInput
           updateTaskTitle={this.updateTaskTitle.bind(this)}
+          updateTaskDescription={this.updateTaskDescription.bind(this)}
           addTask={this.addTask.bind(this)}
         />
         <ScrollView>
