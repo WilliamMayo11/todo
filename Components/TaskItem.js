@@ -18,11 +18,13 @@ export default class TaskItem extends Component {
         component: EditTask,
         title: 'Edit Task',
         passProps: {
-          // user: 'Bill',
-          // id: this.props.id,
-          // updateTaskTitle: this.props.updateTaskTitle,
-          // updateTaskDescription: this.props.updateTaskDescription,
-          // editTask: this.props.editTask
+          user: 'Bill',
+          id: this.props.id,
+          title: this.props.title,
+          description: this.props.description,
+          updateTaskTitle: this.props.updateTaskTitle,
+          updateTaskDescription: this.props.updateTaskDescription,
+          editTask: this.props.editTask
         }
       });
     }
