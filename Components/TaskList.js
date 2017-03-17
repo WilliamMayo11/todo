@@ -28,6 +28,10 @@ export default class TaskList extends Component {
             title={task.title}
             description={task.description}
             deleteTask={this.props.deleteTask}
+            updateTaskTitle={this.props.updateTaskTitle}
+            updateTaskDescription={this.props.updateTaskDescription}
+            editTask={this.props.editTask}
+            navigator={this.props.navigator}
           />
       );
     });

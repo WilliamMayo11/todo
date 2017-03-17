@@ -4,15 +4,16 @@ import {
   View,
   StyleSheet,
   Button,
+  NavigatorIOS,
   TextInput,
-  TouchableHighlight,
 } from 'react-native';
 
-export default class TaskInput extends Component {
+export default class EditTask extends Component {
 
   render() {
+
     return(
-      <View>
+      <View style={styles.container}>
         <TextInput
           style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1}}
           placeholder='New Task'
@@ -30,26 +31,38 @@ export default class TaskInput extends Component {
       </View>
     )
   }
+
 }
 
 const styles = StyleSheet.create({
   container1: {
     flex: 0,
+    flexDirection: 'column',
     justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 90,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  welcome: {
+    fontSize: 20,
+  },
+  container2: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'flex-start',
-    marginBottom: 20,
+    marginTop: -10,
+    position: 'relative',
   },
-  text1: {
-    fontSize: 20,
-    margin: 1,
-    color: '#3b5998',
-  },
-  text2: {
-    fontSize: 20,
-    margin: 1,
-    color: 'black',
-  },
-  button1: {
-    backgroundColor: '#3b5998',
+  container3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginTop: 1,
+    position: 'relative',
   },
 });

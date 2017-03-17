@@ -71,6 +71,10 @@ export default class Today extends Component {
     .catch(err => console.log(err));
   }
 
+  editTask() {
+    console.log('Edit Task Function - Today.js');
+  }
+
   // Handle Text Inputs
 
   updateTaskTitle(text) {
@@ -104,6 +108,11 @@ export default class Today extends Component {
           <TaskList
             tasks={this.state.tasks}
             deleteTask={this.deleteTask.bind(this)}
+            updateTaskTitle={this.updateTaskTitle.bind(this)}
+            updateTaskDescription={this.updateTaskDescription.bind(this)}
+            addTask={this.addTask.bind(this)}
+            editTask={this.editTask.bind(this)}
+            navigator={this.props.navigator}
           />
         </ScrollView>
         <View style={styles.container3}>
