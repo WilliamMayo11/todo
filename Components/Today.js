@@ -71,8 +71,23 @@ export default class Today extends Component {
     .catch(err => console.log(err));
   }
 
-  editTask() {
-    console.log('Edit Task Function - Today.js');
+  editTask(id) {
+    fetch(`http://localhost:3000/db/tasks/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'put',
+      body: JSON.stringify({
+        title: this.state.taskTitle,
+        description: this.state.taskDescription
+      })
+    })
+    .then(this.setState({
+      taskTitle: '',
+      taskDescription: ''
+    }))
+    .then(this.getTasks())
+    .catch(err => console.log(err));
   }
 
   // Handle Text Inputs
@@ -81,6 +96,7 @@ export default class Today extends Component {
     this.setState ({
       taskTitle: text
     });
+    console.log(this.state.taskTitle)
   }
 
   updateTaskDescription(text) {

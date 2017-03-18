@@ -30,7 +30,7 @@ export default class EditTask extends Component {
           />
           <Button
             title='Edit'
-            onPress={this.props.addTask}
+            onPress={this.props.editTask(this.props.id)}
           />
         </View>
       </View>

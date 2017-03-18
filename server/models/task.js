@@ -25,6 +25,13 @@ function addTask(req, res, next) {
   .catch(err => next(err));
 }
 
+function editTask(req, res, next) {
+  console.log('models/editTask');
+  db.none(`UPDATE tasks SET (title, description) = ($1, $2) WHERE id = $3;`, [req.body.title, req.body.description, req.params.id])
+  .then(next())
+    .catch(err => next(err))
+}
+
 module.exports = {
-  getTasks, deleteTask, addTask
+  getTasks, deleteTask, addTask, editTask
 }
