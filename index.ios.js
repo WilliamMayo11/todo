@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Main from './Components/Main';
+import _environment from './server/lib/environment.js'
 
 export default class todo extends Component {
 
@@ -22,7 +23,8 @@ export default class todo extends Component {
           component: Main,
           title: 'Main',
           passProps: {
-            user: 'Bill'
+            user: 'Bill',
+            apiUrl: _environment.development.API_URL
           }
         }}
         style={{flex: 1}}

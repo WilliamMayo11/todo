@@ -26,7 +26,7 @@ export default class Today extends Component {
   // API Fetches
 
   getTasks() {
-    fetch(`http://localhost:3000/db/tasks`)
+    fetch(`${this.props.apiUrl}db/tasks`)
     .then(r => r.json())
     .then(data => {
       console.log(data);

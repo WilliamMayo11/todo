@@ -22,7 +22,8 @@ export default class Main extends Component {
       component: Today,
       title: 'Today',
       passProps: {
-        user: 'Bill'
+        user: 'Bill',
+        apiUrl: this.props.apiUrl
       }
     });
   }
